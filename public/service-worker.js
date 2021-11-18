@@ -17,8 +17,8 @@ const FILES_TO_CACHE = [
   'https://cdn.jsdelivr.net/npm/chart.js@2.8.0'
 ];
 
-const PRE_CACHE = 'precache-v1';
-const RUNTIME = 'runtime';
+const PRECACHE = 'pre-cache-v2';
+const RUNTIME = 'runtime-v2';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -49,22 +49,3 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.url.startsWith(self.location.origin)) {
-    event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        return caches.open(RUNTIME).then((cache) => {
-          return fetch(event.request).then((response) => {
-            return cache.put(event.request, response.clone()).then(() => {
-              return response;
-            });
-          });
-        });
-      })
-    );
-  }
-});
