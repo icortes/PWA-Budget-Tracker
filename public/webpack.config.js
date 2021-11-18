@@ -1,13 +1,13 @@
-import WebpackPwaManifest from "webpack-pwa-manifest";
-import path from 'path';
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const path = require('path');
 
-export const config = {
+const config = {
   entry: {
     index: './index.js',
   },
   output: {
     path: __dirname + '/dist',
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
   },
   mode: 'development',
   module: {
@@ -27,7 +27,23 @@ export const config = {
   plugins: [
     new WebpackPwaManifest({
       fingerprints: false,
-      name: 'Budget Tracker'
-    })
-  ]
-}
+      name: 'Budget Tracker',
+      short_name: 'Bdgt Trkr',
+      description:
+        'An application that allows you to add expenses and deposits to your budget.',
+      background_color: '#808080',
+      theme_color: '#fff',
+      'theme-color': '#fff',
+      start_url: '/',
+      icons: [
+        {
+          src: path.resolve('icons/icon-512x512.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
+          destination: path.join('icons', 'icons'),
+        },
+      ],
+    }),
+  ],
+};
+
+module.exports = config;
