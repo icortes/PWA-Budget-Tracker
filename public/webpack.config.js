@@ -32,14 +32,14 @@ const config = {
       description:
         'An application that allows you to add expenses and deposits to your budget.',
       background_color: '#808080',
-      theme_color: '#fff',
-      'theme-color': '#fff',
+      theme_color: '#317EFB',
+      'theme-color': '#317EFB',
       start_url: '/',
       icons: [
         {
           src: path.resolve('icons/icon-512x512.png'),
           sizes: [96, 128, 192, 256, 384, 512],
-          destination: path.join('icons', 'icons'),
+          destination: path.join('icons'),
         },
       ],
     }),
