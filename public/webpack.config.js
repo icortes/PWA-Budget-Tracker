@@ -4,6 +4,7 @@ const path = require('path');
 const config = {
   entry: {
     index: './index.js',
+    db: './db.js'
   },
   output: {
     path: __dirname + '/dist',
