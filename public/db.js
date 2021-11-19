@@ -24,7 +24,7 @@ request.onerror = function (event) {
 };
 
 request.onsuccess = (event) => {
-  db = event.request.result;
+  db = event.target.result;
 
   if (navigator.onLine) {
     checkDatabase();
